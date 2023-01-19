@@ -1,0 +1,22 @@
+@{
+  ViewData["Title"] = $"Details for {Model.Name}";
+}
+
+<h1>All About @Model.Name</h1>
+
+@if (@Model.Reviews.Count != 0)
+{
+  <ol>
+    @foreach (Review review in @Model.Reviews)
+    {
+      <li>@review.Summary</li>
+      <ul>
+        <li>@review.Rating</li>
+      </ul>
+    }
+  </ol>
+}
+
+<p>@Html.ActionLink("Edit details", "Edit", new { id = @Model.DestinationId })</p>
+<p>@Html.ActionLink("Delete destination", "Delete", new { id = @Model.DestinationId })</p>
+@Html.ActionLink("Return to all destinations", "Index")
